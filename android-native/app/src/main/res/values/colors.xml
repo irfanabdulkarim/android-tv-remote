@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#2196F3</color>
+    <color name="backgroundDark">#121212</color>
+    <color name="surfaceDark">#1E1E1E</color>
+    <color name="buttonNormal">#2D2D2D</color>
+    <color name="buttonPressed">#3D3D3D</color>
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#AAAAAA</color>
+    <color name="powerButton">#F44336</color>
+    <color name="actionButton">#2196F3</color>
+    <color name="volumeButton">#FF9800</color>
+    <color name="keyboardButton">#9C27B0</color>
+</resources>

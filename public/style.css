@@ -1,0 +1,620 @@
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 10px;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+/* Tab navigation */
+.tab-navigation {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px 5px;
+    background-color: #2d2d2d;
+    color: #aaa;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.tab-button.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.tab-button:hover:not(.active) {
+    background-color: #3d3d3d;
+}
+
+/* Tab content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Device management */
+.device-management {
+    margin-bottom: 15px;
+}
+
+.device-selector {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.device-selector select {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #1e1e1e;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.icon-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background-color: #2d2d2d;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.icon-button:hover {
+    background-color: #3d3d3d;
+}
+
+#disconnectDevice {
+    background-color: #f44336;
+}
+
+#disconnectDevice:hover {
+    background-color: #d32f2f;
+}
+
+/* Remote Control Tab */
+.d-pad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.d-pad-row {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #2d2d2d;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.nav-btn.up, .nav-btn.down {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.nav-btn.center {
+    width: 70px;
+    height: 70px;
+    background-color: #4CAF50;
+    font-size: 1rem;
+}
+
+.nav-btn:hover {
+    background-color: #3d3d3d;
+}
+
+.nav-btn.center:hover {
+    background-color: #45a049;
+}
+
+.action-buttons, .volume-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.action-btn, .vol-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #2196F3;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.vol-btn {
+    background-color: #FF9800;
+}
+
+.action-btn:hover {
+    background-color: #1976D2;
+}
+
+.vol-btn:hover {
+    background-color: #F57C00;
+}
+
+.power-section {
+    margin-bottom: 20px;
+}
+
+.power-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f44336;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.power-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Keyboard Section */
+.keyboard-section {
+    margin-top: 15px;
+}
+
+.keyboard-toggle {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #9C27B0;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.2s;
+}
+
+.keyboard-toggle.active {
+    background-color: #4CAF50;
+}
+
+.keyboard-toggle:hover {
+    background-color: #7B1FA2;
+}
+
+.input-container {
+    display: none;
+}
+
+.input-container.active {
+    display: block;
+}
+
+.visible-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #1e1e1e;
+    color: white;
+    font-size: 1rem;
+}
+
+.input-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2d2d2d;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.control-btn:hover {
+    background-color: #3d3d3d;
+}
+
+/* Network Tab */
+.network-scan {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.scan-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.scan-controls input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #2d2d2d;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.scan-controls button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #2196F3;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.scan-controls button:hover {
+    background-color: #1976D2;
+}
+
+.scan-status {
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #2d2d2d;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.scan-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 12px;
+    background-color: #2d2d2d;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    min-width: 40px;
+    text-align: right;
+}
+
+.discovered-devices {
+    margin-top: 10px;
+}
+
+.discovered-device {
+    padding: 10px;
+    background-color: #2d2d2d;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.discovered-device button {
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.discovered-device button:hover {
+    background-color: #45a049;
+}
+
+/* Screen Tab */
+.screen-controls-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.screen-controls-row button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #FF5722;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.screen-controls-row button:hover {
+    background-color: #E64A19;
+}
+
+#stopScreenCapture {
+    background-color: #607D8B;
+}
+
+#stopScreenCapture:hover {
+    background-color: #455A64;
+}
+
+.screen-container {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.screen-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.screen-stats {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+#screenCanvas {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    background-color: #000;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
+.screen-nav-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.screen-nav-controls button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2d2d2d;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.screen-nav-controls button:hover {
+    background-color: #3d3d3d;
+}
+
+/* Mouse pad */
+.mouse-pad-container {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.mouse-pad-container h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #4CAF50;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.mouse-pad {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mouse-pad-surface {
+    height: 150px;
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mouse-pad-surface::before {
+    content: "Touchpad Area";
+    color: #666;
+    font-size: 1rem;
+}
+
+.mouse-pad-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.mouse-button {
+    flex: 1;
+    padding: 12px;
+    background-color: #00BCD4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.mouse-button:hover {
+    background-color: #0097A7;
+}
+
+/* Status area */
+.status {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#status {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    .container {
+        max-width: 500px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .tab-button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    .nav-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+    
+    .nav-btn.up, .nav-btn.down {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .nav-btn.center {
+        width: 80px;
+        height: 80px;
+        font-size: 1.2rem;
+    }
+    
+    .action-buttons, .volume-controls {
+        gap: 15px;
+    }
+    
+    .action-btn, .vol-btn {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    .power-btn {
+        padding: 18px;
+        font-size: 1.1rem;
+    }
+    
+    .scan-controls {
+        flex-direction: row;
+    }
+    
+    .scan-controls input {
+        flex: 1;
+    }
+    
+    .mouse-pad-surface {
+        height: 200px;
+    }
+}
+
+/* Touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .nav-btn, .action-btn, .vol-btn, .power-btn, .control-btn, .icon-button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .tab-button {
+        min-height: 48px;
+    }
+}

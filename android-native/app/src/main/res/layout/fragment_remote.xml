@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- Directional Pad -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/navUp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:text="▲"
+                android:textSize="20sp"
+                android:background="@color/buttonNormal"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/navLeft"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:text="◀"
+                    android:textSize="20sp"
+                    android:background="@color/buttonNormal"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/navCenter"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:text="@string/ok"
+                    android:textSize="16sp"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/navRight"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:text="▶"
+                    android:textSize="20sp"
+                    android:background="@color/buttonNormal" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/navDown"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:text="▼"
+                android:textSize="20sp"
+                android:background="@color/buttonNormal"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp">
+
+            <Button
+                android:id="@+id/actionBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/back"
+                android:background="@color/actionButton"
+                android:layout_marginEnd="10dp" />
+
+            <Button
+                android:id="@+id/actionHome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/home"
+                android:background="@color/actionButton"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" />
+
+            <Button
+                android:id="@+id/actionMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/menu"
+                android:background="@color/actionButton"
+                android:layout_marginStart="10dp" />
+        </LinearLayout>
+
+        <!-- Volume Controls -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/volUp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/vol_up"
+                android:background="@color/volumeButton"
+                android:layout_marginEnd="10dp" />
+
+            <Button
+                android:id="@+id/mute"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/mute"
+                android:background="@color/volumeButton"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" />
+
+            <Button
+                android:id="@+id/volDown"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/vol_down"
+                android:background="@color/volumeButton"
+                android:layout_marginStart="10dp" />
+        </LinearLayout>
+
+        <!-- Power Button -->
+        <Button
+            android:id="@+id/power"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/power"
+            android:background="@color/powerButton"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Keyboard Section -->
+        <Button
+            android:id="@+id/toggleKeyboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/keyboard"
+            android:background="@color/keyboardButton"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:id="@+id/keyboardSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/visibleInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type to send text"
+                android:background="@color/surfaceDark"
+                android:padding="12dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/clearInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/clear"
+                    android:background="@color/buttonNormal"
+                    android:layout_marginEnd="10dp" />
+
+                <Button
+                    android:id="@+id/sendInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/send"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginStart="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

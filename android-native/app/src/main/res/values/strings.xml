@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">TV Remote</string>
+    <string name="title_remote">Remote</string>
+    <string name="title_network">Network</string>
+    <string name="title_screen">Screen</string>
+    <string name="select_device">Select device</string>
+    <string name="refresh">Refresh</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="scan_network">Scan Network</string>
+    <string name="start_screen">Start Screen</string>
+    <string name="stop_screen">Stop Screen</string>
+    <string name="keyboard">Keyboard</string>
+    <string name="clear">Clear</string>
+    <string name="send">Send</string>
+    <string name="power">Power</string>
+    <string name="back">Back</string>
+    <string name="home">Home</string>
+    <string name="menu">Menu</string>
+    <string name="vol_up">Vol+</string>
+    <string name="mute">Mute</string>
+    <string name="vol_down">Vol-</string>
+    <string name="ok">OK</string>
+    <string name="left_click">Left Click</string>
+    <string name="right_click">Right Click</string>

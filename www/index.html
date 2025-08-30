@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>TV Remote Control</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Android TV Remote</h1>
+        
+        <!-- Tab navigation -->
+        <div class="tab-navigation">
+            <button class="tab-button active" data-tab="remote">Remote</button>
+            <button class="tab-button" data-tab="network">Network</button>
+            <button class="tab-button" data-tab="screen">Screen</button>
+        </div>
+        
+        <!-- Device Management Section -->
+        <div class="device-management">
+            <div class="device-selector">
+                <select id="deviceId">
+                    <option value="">Select device</option>
+                </select>
+                <button id="refreshDevices" class="icon-button" title="Refresh devices">
+                    <span class="refresh-icon">↻</span>
+                </button>
+                <button id="disconnectDevice" class="icon-button" title="Disconnect device">
+                    <span class="disconnect-icon">✕</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Remote Control Tab -->
+        <div class="tab-content active" id="remote-tab">
+            <!-- Directional Pad -->
+            <div class="d-pad">
+                <button class="nav-btn up" data-command="input keyevent KEYCODE_DPAD_UP">▲</button>
+                <div class="d-pad-row">
+                    <button class="nav-btn left" data-command="input keyevent KEYCODE_DPAD_LEFT">◀</button>
+                    <button class="nav-btn center" data-command="input keyevent KEYCODE_DPAD_CENTER">OK</button>
+                    <button class="nav-btn right" data-command="input keyevent KEYCODE_DPAD_RIGHT">▶</button>
+                </div>
+                <button class="nav-btn down" data-command="input keyevent KEYCODE_DPAD_DOWN">▼</button>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn" data-command="input keyevent KEYCODE_BACK">Back</button>
+                <button class="action-btn" data-command="input keyevent KEYCODE_HOME">Home</button>
+                <button class="action-btn" data-command="input keyevent KEYCODE_MENU">Menu</button>
+            </div>
+            
+            <!-- Volume Controls -->
+            <div class="volume-controls">
+                <button class="vol-btn" data-command="input keyevent KEYCODE_VOLUME_UP">Vol+</button>
+                <button class="vol-btn" data-command="input keyevent KEYCODE_MUTE">Mute</button>
+                <button class="vol-btn" data-command="input keyevent KEYCODE_VOLUME_DOWN">Vol-</button>
+            </div>
+            
+            <!-- Power Button -->
+            <div class="power-section">
+                <button class="power-btn" data-command="input keyevent KEYCODE_POWER">Power</button>
+            </div>
+            
+            <!-- Keyboard Input -->
+            <div class="keyboard-section">
+                <button id="toggleKeyboard" class="keyboard-toggle">Keyboard</button>
+                <div class="input-container">
+                    <input type="text" id="visibleInput" class="visible-input" placeholder="Type to send text">
+                    <div class="input-controls">
+                        <button id="clearInput" class="control-btn">Clear</button>
+                        <button id="sendInput" class="control-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Network Tab -->
+        <div class="tab-content" id="network-tab">
+            <div class="network-scan">
+                <div class="scan-controls">
+                    <input type="text" id="networkRange" placeholder="Network range (optional)" />
+                    <button id="scanNetwork">Scan Network</button>
+                </div>
+                <div class="scan-status" id="scanStatus">Ready to scan</div>
+                <div class="scan-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">0%</span>
+                </div>
+                <div class="discovered-devices" id="discoveredDevices"></div>
+            </div>
+        </div>
+        
+        <!-- Screen Tab -->
+        <div class="tab-content" id="screen-tab">
+            <div class="screen-controls-row">
+                <button id="startScreenCapture">Start Screen</button>
+                <button id="stopScreenCapture">Stop Screen</button>
+            </div>
+            <div class="screen-container" id="screenContainer">
+                <div class="screen-header">
+                    <div class="screen-stats">
+                        <span id="fpsCounter">0 FPS</span>
+                    </div>
+                </div>
+                <canvas id="screenCanvas" width="1280" height="720"></canvas>
+                <div class="screen-nav-controls">
+                    <button id="screenControlLeft">←</button>
+                    <button id="screenControlCenter">OK</button>
+                    <button id="screenControlRight">→</button>
+                </div>
+            </div>
+            <div class="mouse-pad-container">
+                <h3>Touchpad</h3>
+                <div id="mousePad" class="mouse-pad">
+                    <div class="mouse-pad-surface"></div>
+                    <div class="mouse-pad-buttons">
+                        <button id="mouseLeftClick" class="mouse-button">Left Click</button>
+                        <button id="mouseRightClick" class="mouse-button">Right Click</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status">
+            <p id="status">Ready</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
