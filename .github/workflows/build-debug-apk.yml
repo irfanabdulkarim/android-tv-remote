@@ -1,10 +1,11 @@
-name: Build TVRMOTE APK
+name: Build TVRMOTE APK (Debug)
 
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -26,23 +27,13 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x android/gradlew
 
-    - name: Build APK
+    - name: Build Debug APK
       run: |
         cd android
-        ./gradlew assembleRelease --stacktrace
+        ./gradlew assembleDebug --stacktrace
 
-    - name: Sign APK
-      uses: ilharp/sign-android-release@v1
-      id: sign_app
-      with:
-        releaseDir: android/app/build/outputs/apk/release
-        signingKey: ${{ secrets.SIGNING_KEY }}
-        keyAlias: ${{ secrets.KEY_ALIAS }}
-        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-        keyPassword: ${{ secrets.KEY_PASSWORD }}
-
-    - name: Upload APK
+    - name: Upload Debug APK
       uses: actions/upload-artifact@v4
       with:
-        name: tvrmote-release-apk
-        path: ${{ steps.sign_app.outputs.signedFile }}
+        name: tvrmote-debug-apk
+        path: android/app/build/outputs/apk/debug/app-debug.apk

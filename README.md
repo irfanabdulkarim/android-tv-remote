@@ -61,6 +61,26 @@ A web-based remote control for Android TV boxes using ADB over the internet.
 
 4. Use the remote control interface to control your TV
 
+## Building APK with GitHub Actions
+
+This repository includes GitHub Actions workflows to automatically build APK files:
+
+1. **Debug Build**: Automatically builds a debug APK on every push to the main branch
+2. **Release Build**: Builds and signs a release APK (requires signing keys)
+
+To use these workflows:
+
+1. Push your changes to the main branch
+2. Go to the "Actions" tab in your GitHub repository
+3. Select the workflow you want to run
+4. Download the generated APK from the "Artifacts" section
+
+For release builds, you'll need to set up signing keys as GitHub secrets:
+- SIGNING_KEY
+- KEY_ALIAS
+- KEY_STORE_PASSWORD
+- KEY_PASSWORD
+
 ## Security Considerations
 
 - This application should only be run in a trusted network environment
