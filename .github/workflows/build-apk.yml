@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
 
     # Clear npm cache to prevent EINTEGRITY errors
@@ -33,15 +33,79 @@ jobs:
         distribution: 'temurin'
 
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
+      uses: android-actions/setup-android@v3.2.2
 
-    - name: Sync Capacitor project
-      run: npx cap sync
+    - name: Accept Android SDK licenses
+      run: |
+        echo "Accepting Android SDK licenses"
+        yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+
+    - name: Create www directory
+      run: |
+        mkdir -p www
+        # Copy web assets
+        cp -r public/* www/
+
+    - name: Remove existing Android platform
+      run: |
+        echo "Removing existing Android platform to ensure clean setup"
+        rm -rf android
+
+    - name: Add Android platform
+      run: |
+        echo "Adding Android platform"
+        npx cap add android
+
+    - name: Configure Gradle for JDK 17 compatibility
+      run: |
+        echo "Configuring Gradle for JDK 17 compatibility"
+        echo "org.gradle.java.home=$JAVA_HOME" >> gradle.properties
+        echo "android.enableJetifier=true" >> gradle.properties
+        echo "android.useAndroidX=true" >> gradle.properties
+        echo "org.gradle.jvmargs=-Xmx2048m" >> gradle.properties
+        echo "org.gradle.daemon=false" >> gradle.properties
+
+    - name: Update Gradle wrapper properties
+      run: |
+        echo "Updating Gradle wrapper properties"
+        cd android
+        echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.11.1-all.zip" > gradle/wrapper/gradle-wrapper.properties
+
+    - name: List project structure
+      run: |
+        echo "Project structure:"
+        ls -la
+        echo "Android directory contents:"
+        ls -la android/
+        echo "Android app directory contents:"
+        ls -la android/app/
+        echo "Gradle properties:"
+        cat gradle.properties || echo "No gradle.properties file"
+        echo "Gradle wrapper properties:"
+        cat android/gradle/wrapper/gradle-wrapper.properties || echo "No gradle wrapper properties file"
+
+    - name: Build Android project
+      run: |
+        echo "Copying and syncing Android project"
+        npx cap copy android
+        npx cap sync android
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x android/gradlew
+
+    - name: Check Java version
+      run: |
+        echo "Checking Java version"
+        java -version
+        echo "JAVA_HOME: $JAVA_HOME"
+        echo "Gradle properties:"
+        cat gradle.properties || echo "No gradle.properties file"
 
     - name: Build APK
       run: |
+        echo "Building Release APK"
         cd android
-        ./gradlew assembleRelease
+        ./gradlew assembleRelease --stacktrace --info
 
     - name: Sign APK
       uses: r0adkll/sign-android-release@v1
